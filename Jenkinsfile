@@ -27,6 +27,13 @@ pipeline {
                     sh 'mvn deploy'
                 }
             }
+
+            stage ('Release') {
+            steps {
+                withMaven(maven : 'maven_3_5_0') {
+                    sh 'mvn apply'
+                }
+            }
         }
     }
 }
